@@ -1,4 +1,4 @@
-/*var Mongodb = require('mongodb');
+var Mongodb = require('mongodb');
 var Promise = require('promise');
 var MongoClient = Mongodb.MongoClient;
 
@@ -17,7 +17,7 @@ function getconnection(){
 
 
 function run (id,txt){
-
+txt=new RegExp(txt);
 
 getconnection().then(
 	 function(connection){
@@ -38,13 +38,15 @@ getconnection().then(
 		                     {"services.DiscountRuppes":{$regex:txt,"$options": "i"}},
 		                     {"services.DiscountPerctange":{$regex:txt,"$options": "i"}}                     
 		                     ]}},
-		   {$unwind:"$services"},
-		   {$project:{"service":"$services"}} 		     			 
+		     {"$group":{_id: null,"count":{$sum: 1 }}
+		                            }
+		   //{$unwind:"$services"},
+		  // {$project:{"service":"$services"}} 		     			 
 		 ],function(err,service){
 			 connection.close();
 			 if(err){ console.log("++err"+err);}
              //err && res.status(400).send(err) || res.status(200).send(result);
-			 else {console.log(service);}
+			 else {console.log(service);}	
 		 });
 		 
 	 },
@@ -54,7 +56,7 @@ getconnection().then(
      });
 }
 
-run('LOG9001','TRXF2016088142');*/
+run('LOG9001','4');
 
 var util = require('util');
 process.stdin.setEncoding('utf-8');

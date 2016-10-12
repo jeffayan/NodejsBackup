@@ -1,0 +1,36 @@
+{
+  "name": "BackupServices",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+	  "start": "node ./bin/www",	
+	  "test":"mocha newFile.js"
+  },
+  "dependencies": {
+	 "jquery":"*",
+    "express": "3.2.6",
+    "jade": "*",
+    "mongodb":"*",
+    "promise":"*",
+    "util":"*",
+    "http":"*",
+    "underscore":"*",
+    "browserify":"*",
+    "body-parser":"*",
+    "assert":"*",
+    "should":"latest",
+    "chai":"latest",
+    "jquery":"latest",
+    "jasmine":"latest",
+    "mocha":"latest",
+     "hapi":"15.1.1",
+     "inert":"latest",
+     "good":"latest",
+     "good-console":"latest",
+     "good-squeeze":"latest",
+     "notifyjs":"2.0.3",
+     "bcrypt-nodejs":"0.0.3",
+     "hapi-auth-basic":"4.0.0"
+  }
+  
+}
