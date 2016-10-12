@@ -17,7 +17,18 @@ const users={
 		}
 };
 
-
+const validate = function(request,username,password,callback){
+	const user = users[username];
+	if(!user)
+		{
+			callback(null,false);
+		}
+	bcrypt.compare(password,user.password,(err,isValid) => {
+		callback(err,isValid,{name:user.name});
+	});
+	
+	
+};
 
 server.register([{
 	register:good,
@@ -45,15 +56,19 @@ server.register([{
 }],err=>{
 	if(err) 
 		throw err; 
-	
+	server.auth.strategy("simple", "basic",{validateFunc:validate});
 server.route({
 	
 	method:"get",
-	path:'/{name}',
-	handler: function (req,res){
-		
-		return res.file('./file.html');
+	path:'/',
+	config:{
+		  auth:'simple',
+		  handler: function (req,res){
+		 console.warn("Hello"+req.auth.credentials.name);
+		return res("Hello"+req.auth.credentials.name);
 	}
+	}
+	
 				
 });
 });
