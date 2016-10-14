@@ -31,7 +31,10 @@
      "notifyjs":"2.0.3",
      "bcrypt-nodejs":"0.0.3",
      "hapi-auth-basic":"4.0.0",
-     "bcrypt":"latest"
+     "bcrypt":"latest",
+     "delayed":"latest",
+     "catbox-mongodb":"latest",
+     "catbox-redis":"latest"
   }
   
 }
